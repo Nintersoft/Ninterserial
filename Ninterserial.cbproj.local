@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2014/09/10 14:18:21.000.180,=C:\Users\Mauro\Documents\Embarcadero\Studio\Projects\Project1PCH1.h</Transaction>
+    <Transaction>2014/09/10 14:18:22.000.467,=C:\Users\Mauro\Documents\Embarcadero\Studio\Projects\Unit1.cpp</Transaction>
+    <Transaction>2014/09/10 14:48:51.000.641,C:\Users\Mauro\Documents\Embarcadero\Studio\Projects\Project1.cbproj=C:\Users\Mauro\Documents\Embarcadero\Studio\Projects\Ninterserial.cbproj</Transaction>
+    <Transaction>2014/09/10 14:48:51.000.595,C:\Users\Mauro\Documents\Embarcadero\Studio\Projects\Project1PCH1.h=C:\Users\Mauro\Documents\Embarcadero\Studio\Projects\NinterserialPCH1.h</Transaction>
+    <Transaction>2014/09/10 15:01:41.000.823,=C:\Users\Mauro\Documents\Embarcadero\Studio\Projects\Unit2.cpp</Transaction>
+    <Transaction>2014/09/10 15:10:09.000.682,C:\Users\Mauro\Documents\Embarcadero\Studio\Projects\Unit1.h=C:\Users\Mauro\Documents\Ninterserial\Unit1.h</Transaction>
+    <Transaction>2014/09/10 15:10:09.000.682,C:\Users\Mauro\Documents\Embarcadero\Studio\Projects\Unit1.cpp=C:\Users\Mauro\Documents\Ninterserial\Unit1.cpp</Transaction>
+    <Transaction>2014/09/10 15:10:09.000.682,C:\Users\Mauro\Documents\Embarcadero\Studio\Projects\Unit1.fmx=C:\Users\Mauro\Documents\Ninterserial\Unit1.fmx</Transaction>
+    <Transaction>2014/09/10 15:10:20.000.249,C:\Users\Mauro\Documents\Embarcadero\Studio\Projects\Unit2.fmx=C:\Users\Mauro\Documents\Ninterserial\Unit2.fmx</Transaction>
+    <Transaction>2014/09/10 15:10:20.000.249,C:\Users\Mauro\Documents\Embarcadero\Studio\Projects\Unit2.cpp=C:\Users\Mauro\Documents\Ninterserial\Unit2.cpp</Transaction>
+    <Transaction>2014/09/10 15:10:20.000.249,C:\Users\Mauro\Documents\Embarcadero\Studio\Projects\Unit2.h=C:\Users\Mauro\Documents\Ninterserial\Unit2.h</Transaction>
+    <Transaction>2014/09/10 15:10:27.000.517,C:\Users\Mauro\Documents\Embarcadero\Studio\Projects\NinterserialPCH1.h=C:\Users\Mauro\Documents\Ninterserial\NinterserialPCH1.h</Transaction>
+    <Transaction>2014/09/10 15:10:30.000.145,C:\Users\Mauro\Documents\Embarcadero\Studio\Projects\Ninterserial.cbproj=C:\Users\Mauro\Documents\Ninterserial\Ninterserial.cbproj</Transaction>
+    <Transaction>2014/09/10 17:28:40.506,=C:\Users\Mauro\Documents\Ninterserial\Unit3.cpp</Transaction>
+  </Transactions>
+</BorlandProject>
