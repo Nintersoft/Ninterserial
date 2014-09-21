@@ -1,7 +1,7 @@
 object frmPrincipal: TfrmPrincipal
   Left = 0
   Top = 0
-  Caption = 'Comandos Seriais RS232 - Nintersoft'
+  Caption = 'Ninterserial | Comandos Seriais RS232 - Nintersoft'
   ClientHeight = 480
   ClientWidth = 649
   FormFactor.Width = 320
@@ -133,7 +133,7 @@ object frmPrincipal: TfrmPrincipal
       object bcFecharPorta: TMenuItem
         Locked = True
         Text = 'Fechar Porta'
-        OnClick = bcFecharPortaClick
+        OnClick = btLiberarClick
       end
       object bcDiv: TMenuItem
         Locked = True
@@ -146,10 +146,12 @@ object frmPrincipal: TfrmPrincipal
       object bcSalvar: TMenuItem
         Locked = True
         Text = 'Salvar Sess'#227'o'
+        OnClick = bcSalvarClick
       end
       object bcAbrirSessao: TMenuItem
         Locked = True
         Text = 'Abrir Sess'#227'o'
+        OnClick = bcAbrirSessaoClick
       end
     end
     object bcFerramentas: TMenuItem
@@ -175,6 +177,7 @@ object frmPrincipal: TfrmPrincipal
       object bcConfig: TMenuItem
         Locked = True
         Text = 'Configura'#231#245'es'
+        OnClick = btConfigClick
       end
     end
     object bcAjuda: TMenuItem
@@ -189,7 +192,7 @@ object frmPrincipal: TfrmPrincipal
       end
     end
   end
-  object GroupBox1: TGroupBox
+  object gbConf: TGroupBox
     StyledSettings = [FontColor, Other]
     Height = 136.000000000000000000
     Position.Y = 184.000000000000000000
@@ -209,6 +212,7 @@ object frmPrincipal: TfrmPrincipal
       Text = 'Ajustar'
       TextSettings.Font.Size = 14.000000000000000000
       Width = 138.000000000000000000
+      OnClick = btConfigClick
     end
     object lblNomePorta: TLabel
       StyledSettings = [Family, Style, FontColor]
@@ -249,5 +253,154 @@ object frmPrincipal: TfrmPrincipal
   object bfAbrirSessao: TOpenDialog
     Left = 616
     Top = 288
+  end
+  object gbSelecDest: TGroupBox
+    Anchors = [akLeft, akTop, akRight]
+    StyledSettings = [FontColor, Other]
+    Height = 100.000000000000000000
+    Position.X = 232.000000000000000000
+    Position.Y = 24.000000000000000000
+    Text = 'Selecionar Destino'
+    TextSettings.Font.Family = 'Arial Narrow'
+    TextSettings.Font.Size = 20.000000000000000000
+    TextSettings.Font.Style = [fsBold]
+    Width = 417.000000000000000000
+    TabOrder = 28
+    object rbDestino1: TRadioButton
+      StyledSettings = [Style, FontColor]
+      Height = 19.000000000000000000
+      IsChecked = True
+      Position.X = 24.000000000000000000
+      Position.Y = 40.000000000000000000
+      TabOrder = 1
+      Text = 'Destino 1'
+      TextSettings.Font.Family = 'Arial'
+      TextSettings.Font.Size = 16.000000000000000000
+      Width = 209.000000000000000000
+    end
+    object rbDestino2: TRadioButton
+      StyledSettings = [Style, FontColor]
+      Height = 19.000000000000000000
+      Position.X = 24.000000000000000000
+      Position.Y = 64.000000000000000000
+      TabOrder = 2
+      Text = 'Destino 2'
+      TextSettings.Font.Family = 'Arial'
+      TextSettings.Font.Size = 16.000000000000000000
+      Width = 209.000000000000000000
+    end
+    object rbDestino3: TRadioButton
+      Anchors = [akLeft, akTop, akRight]
+      StyledSettings = [Style, FontColor]
+      Height = 19.000000000000000000
+      Position.X = 256.000000000000000000
+      Position.Y = 40.000000000000000000
+      TabOrder = 3
+      Text = 'Destino 3'
+      TextSettings.Font.Family = 'Arial'
+      TextSettings.Font.Size = 16.000000000000000000
+      Width = 153.000000000000000000
+    end
+    object rbDestino4: TRadioButton
+      Anchors = [akLeft, akTop, akRight]
+      StyledSettings = [Style, FontColor]
+      Height = 19.000000000000000000
+      Position.X = 256.000000000000000000
+      Position.Y = 64.000000000000000000
+      TabOrder = 4
+      Text = 'Destino 4'
+      TextSettings.Font.Family = 'Arial'
+      TextSettings.Font.Size = 16.000000000000000000
+      Width = 153.000000000000000000
+    end
+  end
+  object gbComando: TGroupBox
+    Anchors = [akLeft, akTop, akRight]
+    StyledSettings = [FontColor, Other]
+    Height = 201.000000000000000000
+    Position.X = 232.000000000000000000
+    Position.Y = 120.000000000000000000
+    Text = 'Dados a serem enviados'
+    TextSettings.Font.Family = 'Arial Narrow'
+    TextSettings.Font.Size = 20.000000000000000000
+    TextSettings.Font.Style = [fsBold]
+    Width = 417.000000000000000000
+    TabOrder = 29
+    object lblSaida1: TLabel
+      Anchors = [akLeft, akTop, akRight]
+      StyledSettings = [FontColor]
+      Height = 25.000000000000000000
+      Position.X = 16.000000000000000000
+      Position.Y = 40.000000000000000000
+      TextSettings.Font.Family = 'Arial'
+      TextSettings.Font.Size = 16.000000000000000000
+      Text = 'Sa'#237'da 1'
+      Width = 313.000000000000000000
+    end
+  end
+  object swSaida1: TSwitch
+    Anchors = [akTop, akRight]
+    Enabled = False
+    Height = 27.000000000000000000
+    IsChecked = False
+    Position.X = 576.000000000000000000
+    Position.Y = 160.000000000000000000
+    TabOrder = 30
+    Width = 57.000000000000000000
+    OnClick = swSaida1Click
+    OnSwitch = swSaida1Click
+  end
+  object gbEnv: TGroupBox
+    Anchors = [akLeft, akTop, akRight, akBottom]
+    StyledSettings = [FontColor, Other]
+    Height = 129.000000000000000000
+    Position.Y = 320.000000000000000000
+    Text = 'Enviar status'
+    TextSettings.Font.Family = 'Arial Narrow'
+    TextSettings.Font.Size = 20.000000000000000000
+    TextSettings.Font.Style = [fsBold]
+    Width = 649.000000000000000000
+    TabOrder = 31
+    object btEnviar: TButton
+      Enabled = False
+      Height = 41.000000000000000000
+      Position.X = 48.000000000000000000
+      Position.Y = 48.000000000000000000
+      TabOrder = 1
+      Text = 'Enviar comandos'
+      Width = 104.000000000000000000
+      OnClick = btEnviarClick
+    end
+    object swPersona: TSwitch
+      Anchors = [akRight, akBottom]
+      Enabled = False
+      Height = 27.000000000000000000
+      IsChecked = False
+      Position.X = 560.000000000000000000
+      Position.Y = 96.000000000000000000
+      TabOrder = 4
+      Width = 78.000000000000000000
+      OnSwitch = swPersonaSwitch
+    end
+    object lblPersona: TLabel
+      Anchors = [akRight, akBottom]
+      StyledSettings = [Style, FontColor]
+      Height = 25.000000000000000000
+      Position.X = 328.000000000000000000
+      Position.Y = 96.000000000000000000
+      TextSettings.Font.Family = 'Arial'
+      TextSettings.Font.Size = 16.000000000000000000
+      Text = 'Configura'#231#245'es personalizadas'
+      Width = 224.000000000000000000
+    end
+    object mmDados: TMemo
+      Touch.InteractiveGestures = [Pan, LongTap, DoubleTap]
+      Height = 41.000000000000000000
+      Position.X = 280.000000000000000000
+      Position.Y = 16.000000000000000000
+      TabOrder = 6
+      Visible = False
+      Width = 289.000000000000000000
+    end
   end
 end

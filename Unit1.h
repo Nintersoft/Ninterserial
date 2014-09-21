@@ -11,6 +11,8 @@
 #include <FMX.StdCtrls.hpp>
 #include <FMX.Types.hpp>
 #include <FMX.Dialogs.hpp>
+#include <FMX.Layouts.hpp>
+#include <FMX.Memo.hpp>
 //---------------------------------------------------------------------------
 class TfrmPrincipal : public TForm
 {
@@ -46,10 +48,23 @@ __published:	// IDE-managed Components
 	TMenuItem *bcAbrirSessao;
 	TSaveDialog *bfSalvarSec;
 	TOpenDialog *bfAbrirSessao;
-	TGroupBox *GroupBox1;
+	TGroupBox *gbConf;
 	TButton *btConfig;
 	TLabel *lblNomePorta;
 	TLabel *lblPorta;
+	TButton *btEnviar;
+	TGroupBox *gbSelecDest;
+	TGroupBox *gbComando;
+	TSwitch *swSaida1;
+	TLabel *lblSaida1;
+	TGroupBox *gbEnv;
+	TRadioButton *rbDestino1;
+	TRadioButton *rbDestino2;
+	TRadioButton *rbDestino3;
+	TRadioButton *rbDestino4;
+	TSwitch *swPersona;
+	TLabel *lblPersona;
+	TMemo *mmDados;
 	void __fastcall btAbrirClick(TObject *Sender);
 	void __fastcall btLiberarClick(TObject *Sender);
 	void __fastcall bcAbrirPortaClick(TObject *Sender);
@@ -57,6 +72,12 @@ __published:	// IDE-managed Components
 	void __fastcall FormShow(TObject *Sender);
 	void __fastcall bcLogClick(TObject *Sender);
 	void __fastcall bcSalvarLogClick(TObject *Sender);
+	void __fastcall btEnviarClick(TObject *Sender);
+	void __fastcall swSaida1Click(TObject *Sender);
+	void __fastcall btConfigClick(TObject *Sender);
+	void __fastcall swPersonaSwitch(TObject *Sender);
+	void __fastcall bcAbrirSessaoClick(TObject *Sender);
+	void __fastcall bcSalvarClick(TObject *Sender);
 private:	// User declarations
 public:		// User declarations
 	__fastcall TfrmPrincipal(TComponent* Owner);

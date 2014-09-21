@@ -9,19 +9,28 @@
 #include <FMX.Edit.hpp>
 #include <FMX.StdCtrls.hpp>
 #include <FMX.Types.hpp>
+#include <FMX.Layouts.hpp>
+#include <FMX.Memo.hpp>
 //---------------------------------------------------------------------------
-class TForm3 : public TForm
+class TfrmConf : public TForm
 {
 __published:	// IDE-managed Components
-	TNumberBox *NumberBox1;
-	TLabel *Label1;
-	TButton *Button1;
-	TLabel *Label2;
+	TNumberBox *cnPorta;
+	TLabel *lblComPort;
+	TButton *bnDefinir;
+	TGroupBox *gbCon;
+	TGroupBox *gbInter;
+	TCheckBox *cbEnvDad;
+	TButton *bnRest;
+	TSpeedButton *sbAjPorta;
+	TMemo *mmData;
+	void __fastcall bnDefinirClick(TObject *Sender);
+	void __fastcall bnRestClick(TObject *Sender);
 private:	// User declarations
 public:		// User declarations
-	__fastcall TForm3(TComponent* Owner);
+	__fastcall TfrmConf(TComponent* Owner);
 };
 //---------------------------------------------------------------------------
-extern PACKAGE TForm3 *Form3;
+extern PACKAGE TfrmConf *frmConf;
 //---------------------------------------------------------------------------
 #endif

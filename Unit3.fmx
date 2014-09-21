@@ -1,9 +1,11 @@
-object Form3: TForm3
+object frmConf: TfrmConf
   Left = 0
   Top = 0
-  Caption = 'Configura'#231#245'es - Ninterserial'
-  ClientHeight = 480
-  ClientWidth = 640
+  BorderIcons = [biSystemMenu, biMinimize]
+  BorderStyle = Single
+  Caption = 'Ninterserial | Configura'#231#245'es'
+  ClientHeight = 105
+  ClientWidth = 682
   FormFactor.Width = 320
   FormFactor.Height = 480
   FormFactor.Devices = [Desktop, iPhone, iPad]
@@ -13,36 +15,100 @@ object Form3: TForm3
   DesignerDeviceName = ''
   DesignerOrientation = 0
   DesignerOSVersion = ''
-  object NumberBox1: TNumberBox
-    Touch.InteractiveGestures = [LongTap, DoubleTap]
-    TabOrder = 1
-    Cursor = crIBeam
-    Position.X = 200.000000000000000000
-    Position.Y = 32.000000000000000000
-    Width = 100.000000000000000000
-    Height = 22.000000000000000000
-    VertIncrement = 5.000000000000000000
-  end
-  object Label1: TLabel
-    Height = 17.000000000000000000
-    Position.X = 80.000000000000000000
-    Position.Y = 40.000000000000000000
-    Text = 'Label1'
-    Width = 120.000000000000000000
-  end
-  object Button1: TButton
-    Height = 22.000000000000000000
-    Position.X = 248.000000000000000000
-    Position.Y = 216.000000000000000000
-    TabOrder = 3
+  object bnDefinir: TButton
+    StyledSettings = [Style, FontColor]
+    Height = 41.000000000000000000
+    Position.X = 576.000000000000000000
+    Position.Y = 8.000000000000000000
+    TabOrder = 2
     Text = 'Definir'
-    Width = 80.000000000000000000
+    TextSettings.Font.Family = 'Arial'
+    TextSettings.Font.Size = 16.000000000000000000
+    Width = 96.000000000000000000
+    OnClick = bnDefinirClick
   end
-  object Label2: TLabel
-    Height = 17.000000000000000000
-    Position.X = 152.000000000000000000
-    Position.Y = 96.000000000000000000
-    Text = 'Label2'
-    Width = 120.000000000000000000
+  object gbCon: TGroupBox
+    StyledSettings = [FontColor, Other]
+    Height = 105.000000000000000000
+    Text = 'Conex'#227'o'
+    TextSettings.Font.Family = 'Arial Narrow'
+    TextSettings.Font.Size = 20.000000000000000000
+    TextSettings.Font.Style = [fsBold]
+    Width = 289.000000000000000000
+    TabOrder = 4
+    object cnPorta: TNumberBox
+      Touch.InteractiveGestures = [LongTap, DoubleTap]
+      TabOrder = 1
+      Cursor = crIBeam
+      Max = 255.000000000000000000
+      Position.X = 120.000000000000000000
+      Position.Y = 38.000000000000000000
+      Width = 153.000000000000000000
+      Height = 27.000000000000000000
+      VertIncrement = 5.000000000000000000
+    end
+    object lblComPort: TLabel
+      StyledSettings = [Style, FontColor]
+      Height = 22.000000000000000000
+      Position.X = 16.000000000000000000
+      Position.Y = 43.000000000000000000
+      TextSettings.Font.Family = 'Arial'
+      TextSettings.Font.Size = 16.000000000000000000
+      Text = 'Porta:'
+      Width = 97.000000000000000000
+    end
+    object sbAjPorta: TSpeedButton
+      Cursor = crHelp
+      Height = 22.000000000000000000
+      HelpType = htKeyword
+      Position.X = 64.000000000000000000
+      Position.Y = 40.000000000000000000
+      StyleLookup = 'buttonstylelabel'
+      Text = '?'
+      Width = 33.000000000000000000
+    end
+  end
+  object gbInter: TGroupBox
+    StyledSettings = [FontColor, Other]
+    Height = 105.000000000000000000
+    Position.X = 288.000000000000000000
+    Text = 'Interface e comandos'
+    TextSettings.Font.Family = 'Arial Narrow'
+    TextSettings.Font.Size = 20.000000000000000000
+    TextSettings.Font.Style = [fsBold]
+    Width = 281.000000000000000000
+    TabOrder = 5
+    object cbEnvDad: TCheckBox
+      StyledSettings = [Style, FontColor]
+      Height = 33.000000000000000000
+      Position.X = 16.000000000000000000
+      Position.Y = 40.000000000000000000
+      TabOrder = 1
+      Text = 'Enviar dados instantaneamente'
+      TextSettings.Font.Family = 'Arial'
+      TextSettings.Font.Size = 16.000000000000000000
+      Width = 257.000000000000000000
+    end
+    object mmData: TMemo
+      Touch.InteractiveGestures = [Pan, LongTap, DoubleTap]
+      Height = 34.000000000000000000
+      Position.X = 24.000000000000000000
+      Position.Y = 72.000000000000000000
+      TabOrder = 3
+      Visible = False
+      Width = 241.000000000000000000
+    end
+  end
+  object bnRest: TButton
+    StyledSettings = [Style, FontColor]
+    Height = 41.000000000000000000
+    Position.X = 576.000000000000000000
+    Position.Y = 56.000000000000000000
+    TabOrder = 6
+    Text = 'Restaurar'
+    TextSettings.Font.Family = 'Arial'
+    TextSettings.Font.Size = 16.000000000000000000
+    Width = 97.000000000000000000
+    OnClick = bnRestClick
   end
 end

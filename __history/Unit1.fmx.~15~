@@ -1,0 +1,373 @@
+object frmPrincipal: TfrmPrincipal
+  Left = 0
+  Top = 0
+  Caption = 'Comandos Seriais RS232 - Nintersoft'
+  ClientHeight = 480
+  ClientWidth = 649
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop, iPhone, iPad]
+  OnShow = FormShow
+  DesignerMobile = False
+  DesignerWidth = 0
+  DesignerHeight = 0
+  DesignerDeviceName = ''
+  DesignerOrientation = 0
+  DesignerOSVersion = ''
+  object gbControle: TGroupBox
+    StyledSettings = [FontColor, Other]
+    Height = 161.000000000000000000
+    Position.Y = 24.000000000000000000
+    Text = 'Controle de portas'
+    TextSettings.Font.Family = 'Arial Narrow'
+    TextSettings.Font.Size = 20.000000000000000000
+    TextSettings.Font.Style = [fsBold]
+    Width = 226.000000000000000000
+    TabOrder = 1
+    object btAbrir: TButton
+      Anchors = [akLeft, akTop, akRight]
+      StyledSettings = [Family, Style, FontColor]
+      Height = 49.000000000000000000
+      Position.X = 16.000000000000000000
+      Position.Y = 32.000000000000000000
+      TabOrder = 1
+      Text = 'Abrir porta'
+      TextSettings.Font.Size = 20.000000000000000000
+      Width = 194.000000000000000000
+      OnClick = btAbrirClick
+    end
+    object btLiberar: TButton
+      Anchors = [akLeft, akRight, akBottom]
+      StyledSettings = [Family, Style, FontColor]
+      Height = 49.000000000000000000
+      Position.X = 16.000000000000000000
+      Position.Y = 96.000000000000000000
+      TabOrder = 2
+      Text = 'Liberar porta'
+      TextSettings.Font.Size = 20.000000000000000000
+      Width = 194.000000000000000000
+      OnClick = btLiberarClick
+    end
+  end
+  object BarraStatus: TStatusBar
+    Height = 32.000000000000000000
+    Position.Y = 448.000000000000000000
+    ShowSizeGrip = True
+    Width = 649.000000000000000000
+    TabOrder = 2
+    object lblStatusL: TLabel
+      StyledSettings = [Family, FontColor]
+      Height = 33.000000000000000000
+      TextSettings.Font.Size = 16.000000000000000000
+      TextSettings.Font.Style = [fsBold]
+      Text = 'Status:'
+      Width = 57.000000000000000000
+    end
+    object lblLog: TLabel
+      StyledSettings = [FontColor]
+      Height = 33.000000000000000000
+      Position.X = 208.000000000000000000
+      Position.Y = 1.000000000000000000
+      TextSettings.Font.Family = 'Arial Narrow'
+      TextSettings.Font.Size = 16.000000000000000000
+      TextSettings.Font.Style = [fsBold]
+      Text = 'Ultima ocorr'#234'ncia:'
+      Width = 145.000000000000000000
+    end
+    object lblStatus: TLabel
+      StyledSettings = [Family, FontColor]
+      Height = 33.000000000000000000
+      Position.X = 56.000000000000000000
+      Position.Y = 1.000000000000000000
+      TextSettings.Font.Size = 16.000000000000000000
+      TextSettings.Font.Style = [fsBold]
+      Text = 'Desativada'
+      Width = 97.000000000000000000
+    end
+    object lblUltimoReg: TLabel
+      Anchors = [akLeft, akTop, akRight]
+      StyledSettings = [FontColor]
+      Height = 33.000000000000000000
+      Position.X = 351.000000000000000000
+      Position.Y = 1.000000000000000000
+      TextSettings.Font.Family = 'Segoe UI Semibold'
+      TextSettings.Font.Size = 16.000000000000000000
+      TextSettings.Font.Style = [fsBold]
+      Text = 'Programa inicializado'
+      Width = 298.000000000000000000
+    end
+    object spStatus: TCircle
+      Fill.Color = claRed
+      Height = 33.000000000000000000
+      Position.X = 160.000000000000000000
+      Position.Y = 1.000000000000000000
+      Width = 25.000000000000000000
+    end
+    object spLig: TCircle
+      Fill.Color = claLime
+      Height = 34.000000000000000000
+      Position.X = 160.000000000000000000
+      Position.Y = 2.000000000000000000
+      Width = 25.000000000000000000
+    end
+    object spStatusInd: TCircle
+      Fill.Color = claBlueviolet
+      Height = 34.000000000000000000
+      Position.X = 160.000000000000000000
+      Position.Y = 2.000000000000000000
+      Width = 25.000000000000000000
+    end
+  end
+  object BarraCardapio: TMenuBar
+    Align = MostTop
+    Height = 24.000000000000000000
+    TabOrder = 5
+    Width = 649.000000000000000000
+    object bcArquivo: TMenuItem
+      Text = 'Arquivo'
+      object bcAbrirPorta: TMenuItem
+        Locked = True
+        Text = 'Abrir Porta'
+        OnClick = bcAbrirPortaClick
+      end
+      object bcFecharPorta: TMenuItem
+        Locked = True
+        Text = 'Fechar Porta'
+        OnClick = bcFecharPortaClick
+      end
+      object bcDiv: TMenuItem
+        Locked = True
+        Text = '-'
+      end
+      object bcSalvarComo: TMenuItem
+        Locked = True
+        Text = 'Salvar Sess'#227'o Como... '
+      end
+      object bcSalvar: TMenuItem
+        Locked = True
+        Text = 'Salvar Sess'#227'o'
+      end
+      object bcAbrirSessao: TMenuItem
+        Locked = True
+        Text = 'Abrir Sess'#227'o'
+      end
+    end
+    object bcFerramentas: TMenuItem
+      Text = 'Ferramentas'
+      object bcLog: TMenuItem
+        Locked = True
+        Text = 'Log'
+        OnClick = bcLogClick
+      end
+      object bcLogs: TMenuItem
+        Locked = True
+        Text = 'Logs'
+        object bcSalvarLog: TMenuItem
+          Locked = True
+          Text = 'Salvar Log'
+          OnClick = bcSalvarLogClick
+        end
+      end
+      object bcDiv1: TMenuItem
+        Locked = True
+        Text = '-'
+      end
+      object bcConfig: TMenuItem
+        Locked = True
+        Text = 'Configura'#231#245'es'
+        OnClick = btConfigClick
+      end
+    end
+    object bcAjuda: TMenuItem
+      Text = 'Ajuda'
+      object bcSobre: TMenuItem
+        Locked = True
+        Text = 'Sobre'
+      end
+      object bcAjuda1: TMenuItem
+        Locked = True
+        Text = 'Ajuda'
+      end
+    end
+  end
+  object gbConf: TGroupBox
+    StyledSettings = [FontColor, Other]
+    Height = 136.000000000000000000
+    Position.Y = 184.000000000000000000
+    Text = 'Configura'#231#245'es'
+    TextSettings.Font.Family = 'Arial Narrow'
+    TextSettings.Font.Size = 20.000000000000000000
+    TextSettings.Font.Style = [fsBold]
+    Width = 226.000000000000000000
+    TabOrder = 13
+    object btConfig: TButton
+      Anchors = [akLeft, akRight, akBottom]
+      StyledSettings = [Family, Style, FontColor]
+      Height = 22.000000000000000000
+      Position.X = 48.000000000000000000
+      Position.Y = 106.000000000000000000
+      TabOrder = 1
+      Text = 'Ajustar'
+      TextSettings.Font.Size = 14.000000000000000000
+      Width = 138.000000000000000000
+      OnClick = btConfigClick
+    end
+    object lblNomePorta: TLabel
+      StyledSettings = [Family, Style, FontColor]
+      Height = 17.000000000000000000
+      Position.X = 24.000000000000000000
+      Position.Y = 40.000000000000000000
+      TextSettings.Font.Size = 16.000000000000000000
+      Text = 'Porta COM atual:'
+      Width = 145.000000000000000000
+    end
+    object lblPorta: TLabel
+      StyledSettings = [Family, Style, FontColor]
+      Height = 17.000000000000000000
+      Position.X = 80.000000000000000000
+      Position.Y = 72.000000000000000000
+      TextSettings.Font.Size = 16.000000000000000000
+      TextSettings.HorzAlign = Trailing
+      Text = '0'
+      Width = 120.000000000000000000
+    end
+  end
+  object bfSalvar: TSaveDialog
+    DefaultExt = '*.txt'
+    FileName = 'Ninterserial_log.txt'
+    Filter = 'Arquivos de texto|*.txt|Arquivo LOG|*.log'
+    Title = 'Salvar arquivo de log - Ninterserial'
+    Left = 616
+    Top = 192
+  end
+  object bfSalvarSec: TSaveDialog
+    DefaultExt = '*.nsns'
+    FileName = 'Ninterserial_Sess'#227'o.nsns'
+    Filter = 'Arquivo de sess'#227'o Ninterserial|*.nsns|Arquivo de texto|*.txt'
+    Title = 'Salvar sess'#227'o - Ninterserial'
+    Left = 616
+    Top = 240
+  end
+  object bfAbrirSessao: TOpenDialog
+    Left = 616
+    Top = 288
+  end
+  object gbSelecDest: TGroupBox
+    Anchors = [akLeft, akTop, akRight]
+    StyledSettings = [FontColor, Other]
+    Height = 100.000000000000000000
+    Position.X = 232.000000000000000000
+    Position.Y = 24.000000000000000000
+    Text = 'Selecionar Destino'
+    TextSettings.Font.Family = 'Arial Narrow'
+    TextSettings.Font.Size = 20.000000000000000000
+    TextSettings.Font.Style = [fsBold]
+    Width = 417.000000000000000000
+    TabOrder = 28
+    object rbDestino1: TRadioButton
+      StyledSettings = [Style, FontColor]
+      Height = 19.000000000000000000
+      IsChecked = True
+      Position.X = 24.000000000000000000
+      Position.Y = 40.000000000000000000
+      TabOrder = 1
+      Text = 'Destino 1'
+      TextSettings.Font.Family = 'Arial'
+      TextSettings.Font.Size = 16.000000000000000000
+      Width = 209.000000000000000000
+    end
+    object rbDestino2: TRadioButton
+      StyledSettings = [Style, FontColor]
+      Height = 19.000000000000000000
+      Position.X = 24.000000000000000000
+      Position.Y = 64.000000000000000000
+      TabOrder = 2
+      Text = 'Destino 2'
+      TextSettings.Font.Family = 'Arial'
+      TextSettings.Font.Size = 16.000000000000000000
+      Width = 209.000000000000000000
+    end
+    object rbDestino3: TRadioButton
+      Anchors = [akLeft, akTop, akRight]
+      StyledSettings = [Style, FontColor]
+      Height = 19.000000000000000000
+      Position.X = 256.000000000000000000
+      Position.Y = 40.000000000000000000
+      TabOrder = 3
+      Text = 'Destino 3'
+      TextSettings.Font.Family = 'Arial'
+      TextSettings.Font.Size = 16.000000000000000000
+      Width = 153.000000000000000000
+    end
+    object rbDestino4: TRadioButton
+      Anchors = [akLeft, akTop, akRight]
+      StyledSettings = [Style, FontColor]
+      Height = 19.000000000000000000
+      Position.X = 256.000000000000000000
+      Position.Y = 64.000000000000000000
+      TabOrder = 4
+      Text = 'Destino 4'
+      TextSettings.Font.Family = 'Arial'
+      TextSettings.Font.Size = 16.000000000000000000
+      Width = 153.000000000000000000
+    end
+  end
+  object gbComando: TGroupBox
+    Anchors = [akLeft, akTop, akRight]
+    StyledSettings = [FontColor, Other]
+    Height = 201.000000000000000000
+    Position.X = 232.000000000000000000
+    Position.Y = 120.000000000000000000
+    Text = 'Dados a serem enviados'
+    TextSettings.Font.Family = 'Arial Narrow'
+    TextSettings.Font.Size = 20.000000000000000000
+    TextSettings.Font.Style = [fsBold]
+    Width = 417.000000000000000000
+    TabOrder = 29
+    object lblSaida1: TLabel
+      Anchors = [akLeft, akTop, akRight]
+      StyledSettings = [FontColor]
+      Height = 25.000000000000000000
+      Position.X = 16.000000000000000000
+      Position.Y = 40.000000000000000000
+      TextSettings.Font.Family = 'Arial'
+      TextSettings.Font.Size = 16.000000000000000000
+      Text = 'Sa'#237'da 1'
+      Width = 313.000000000000000000
+    end
+  end
+  object swSaida1: TSwitch
+    Anchors = [akTop, akRight]
+    Enabled = False
+    Height = 27.000000000000000000
+    IsChecked = False
+    Position.X = 576.000000000000000000
+    Position.Y = 160.000000000000000000
+    TabOrder = 30
+    Width = 57.000000000000000000
+    OnClick = swSaida1Click
+    OnSwitch = swSaida1Click
+  end
+  object gbEnv: TGroupBox
+    Anchors = [akLeft, akTop, akRight, akBottom]
+    StyledSettings = [FontColor, Other]
+    Height = 129.000000000000000000
+    Position.Y = 320.000000000000000000
+    Text = 'Enviar status'
+    TextSettings.Font.Family = 'Arial Narrow'
+    TextSettings.Font.Size = 20.000000000000000000
+    TextSettings.Font.Style = [fsBold]
+    Width = 649.000000000000000000
+    TabOrder = 31
+    object btEnviar: TButton
+      Enabled = False
+      Height = 41.000000000000000000
+      Position.X = 48.000000000000000000
+      Position.Y = 48.000000000000000000
+      TabOrder = 1
+      Text = 'Enviar comandos'
+      Width = 104.000000000000000000
+      OnClick = btEnviarClick
+    end
+  end
+end
