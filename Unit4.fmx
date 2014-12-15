@@ -2,7 +2,7 @@ object frmSobre: TfrmSobre
   Left = 0
   Top = 0
   Caption = 'Ninterserial | Sobre'
-  ClientHeight = 480
+  ClientHeight = 184
   ClientWidth = 640
   FormFactor.Width = 320
   FormFactor.Height = 480
@@ -13,4 +13,53 @@ object frmSobre: TfrmSobre
   DesignerDeviceName = ''
   DesignerOrientation = 0
   DesignerOSVersion = ''
+  object Label1: TLabel
+    Height = 17.000000000000000000
+    Position.X = 16.000000000000000000
+    Position.Y = 16.000000000000000000
+    Text = 'Label1'
+    Width = 120.000000000000000000
+  end
+  object Label2: TLabel
+    Height = 17.000000000000000000
+    Position.X = 176.000000000000000000
+    Position.Y = 16.000000000000000000
+    Text = 'Label2'
+    Width = 120.000000000000000000
+  end
+  object Label3: TLabel
+    Height = 17.000000000000000000
+    Position.X = 16.000000000000000000
+    Position.Y = 48.000000000000000000
+    Text = 'Label3'
+    Width = 120.000000000000000000
+  end
+  object Label4: TLabel
+    Height = 17.000000000000000000
+    Position.X = 176.000000000000000000
+    Position.Y = 48.000000000000000000
+    Text = 'Label4'
+    Width = 120.000000000000000000
+  end
+  object Label5: TLabel
+    Height = 17.000000000000000000
+    Position.X = 16.000000000000000000
+    Position.Y = 80.000000000000000000
+    Text = 'Label5'
+    Width = 120.000000000000000000
+  end
+  object Label6: TLabel
+    Height = 17.000000000000000000
+    Position.X = 176.000000000000000000
+    Position.Y = 80.000000000000000000
+    Text = 'Label6'
+    Width = 120.000000000000000000
+  end
+  object Label7: TLabel
+    Height = 17.000000000000000000
+    Position.X = 240.000000000000000000
+    Position.Y = 144.000000000000000000
+    Text = 'Label7'
+    Width = 120.000000000000000000
+  end
 end

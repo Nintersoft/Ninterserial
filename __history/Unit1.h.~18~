@@ -62,7 +62,17 @@ __published:	// IDE-managed Components
 	TRadioButton *rbDestino2;
 	TRadioButton *rbDestino3;
 	TRadioButton *rbDestino4;
+	TSwitch *swPersona;
+	TLabel *lblPersona;
 	TMemo *mmDados;
+	TLabel *lblSaida2;
+	TLabel *lblSaida3;
+	TLabel *lblSaida4;
+	TLabel *lblSaida5;
+	TSwitch *Switch1;
+	TSwitch *Switch2;
+	TSwitch *Switch3;
+	TSwitch *Switch4;
 	void __fastcall btAbrirClick(TObject *Sender);
 	void __fastcall btLiberarClick(TObject *Sender);
 	void __fastcall bcAbrirPortaClick(TObject *Sender);
@@ -73,6 +83,9 @@ __published:	// IDE-managed Components
 	void __fastcall btEnviarClick(TObject *Sender);
 	void __fastcall swSaida1Click(TObject *Sender);
 	void __fastcall btConfigClick(TObject *Sender);
+	void __fastcall swPersonaSwitch(TObject *Sender);
+	void __fastcall bcAbrirSessaoClick(TObject *Sender);
+	void __fastcall bcSalvarClick(TObject *Sender);
 private:	// User declarations
 public:		// User declarations
 	__fastcall TfrmPrincipal(TComponent* Owner);

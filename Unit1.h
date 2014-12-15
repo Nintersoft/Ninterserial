@@ -13,6 +13,8 @@
 #include <FMX.Dialogs.hpp>
 #include <FMX.Layouts.hpp>
 #include <FMX.Memo.hpp>
+#include <Soap.OPToSOAPDomConv.hpp>
+#include <Soap.SOAPDomConv.hpp>
 //---------------------------------------------------------------------------
 class TfrmPrincipal : public TForm
 {
@@ -65,6 +67,15 @@ __published:	// IDE-managed Components
 	TSwitch *swPersona;
 	TLabel *lblPersona;
 	TMemo *mmDados;
+	TLabel *lblSaida2;
+	TLabel *lblSaida3;
+	TLabel *lblSaida4;
+	TLabel *lblSaida5;
+	TSwitch *swSaida2;
+	TSwitch *swSaida3;
+	TSwitch *swSaida4;
+	TSwitch *swSaida5;
+	TOPToSoapDomConvert *OPToSoapDomConvert1;
 	void __fastcall btAbrirClick(TObject *Sender);
 	void __fastcall btLiberarClick(TObject *Sender);
 	void __fastcall bcAbrirPortaClick(TObject *Sender);
@@ -78,6 +89,10 @@ __published:	// IDE-managed Components
 	void __fastcall swPersonaSwitch(TObject *Sender);
 	void __fastcall bcAbrirSessaoClick(TObject *Sender);
 	void __fastcall bcSalvarClick(TObject *Sender);
+	void __fastcall swSaida2Click(TObject *Sender);
+	void __fastcall swSaida3Switch(TObject *Sender);
+	void __fastcall swSaida4Switch(TObject *Sender);
+	void __fastcall swSaida5Switch(TObject *Sender);
 private:	// User declarations
 public:		// User declarations
 	__fastcall TfrmPrincipal(TComponent* Owner);

@@ -1,7 +1,7 @@
 object frmPrincipal: TfrmPrincipal
   Left = 0
   Top = 0
-  Caption = 'Comandos Seriais RS232 - Nintersoft'
+  Caption = 'Ninterserial | Comandos Seriais RS232 - Nintersoft'
   ClientHeight = 480
   ClientWidth = 649
   FormFactor.Width = 320
@@ -133,7 +133,7 @@ object frmPrincipal: TfrmPrincipal
       object bcFecharPorta: TMenuItem
         Locked = True
         Text = 'Fechar Porta'
-        OnClick = bcFecharPortaClick
+        OnClick = btLiberarClick
       end
       object bcDiv: TMenuItem
         Locked = True
@@ -146,10 +146,12 @@ object frmPrincipal: TfrmPrincipal
       object bcSalvar: TMenuItem
         Locked = True
         Text = 'Salvar Sess'#227'o'
+        OnClick = bcSalvarClick
       end
       object bcAbrirSessao: TMenuItem
         Locked = True
         Text = 'Abrir Sess'#227'o'
+        OnClick = bcAbrirSessaoClick
       end
     end
     object bcFerramentas: TMenuItem
@@ -369,15 +371,36 @@ object frmPrincipal: TfrmPrincipal
       Width = 104.000000000000000000
       OnClick = btEnviarClick
     end
+    object swPersona: TSwitch
+      Anchors = [akRight, akBottom]
+      Enabled = False
+      Height = 27.000000000000000000
+      IsChecked = False
+      Position.X = 560.000000000000000000
+      Position.Y = 96.000000000000000000
+      TabOrder = 4
+      Width = 78.000000000000000000
+      OnSwitch = swPersonaSwitch
+    end
+    object lblPersona: TLabel
+      Anchors = [akRight, akBottom]
+      StyledSettings = [Style, FontColor]
+      Height = 25.000000000000000000
+      Position.X = 328.000000000000000000
+      Position.Y = 96.000000000000000000
+      TextSettings.Font.Family = 'Arial'
+      TextSettings.Font.Size = 16.000000000000000000
+      Text = 'Configura'#231#245'es personalizadas'
+      Width = 224.000000000000000000
+    end
     object mmDados: TMemo
       Touch.InteractiveGestures = [Pan, LongTap, DoubleTap]
-      Height = 50.000000000000000000
-      Position.X = 416.000000000000000000
-      Position.Y = 72.000000000000000000
-      TabOrder = 3
+      Height = 41.000000000000000000
+      Position.X = 280.000000000000000000
+      Position.Y = 16.000000000000000000
+      TabOrder = 6
       Visible = False
-      Width = 193.000000000000000000
-      OnChange = mmDadosChange
+      Width = 289.000000000000000000
     end
   end
 end

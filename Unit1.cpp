@@ -230,10 +230,34 @@ char destinatario(){
 char comandos(){
 	char comand;
 	if (frmPrincipal->swSaida1->IsChecked == true) {
-		comand = 'L';
+		comand = 'A';
 	}
 	else {
+		comand = 'a';
+	}
+	if (frmPrincipal->swSaida2->IsChecked == true) {
+		comand = 'B';
+	}
+	else {
+		comand = 'b';
+	}
+	if (frmPrincipal->swSaida3->IsChecked == true) {
+		comand = 'C';
+	}
+	else {
+		comand = 'c';
+	}
+	if (frmPrincipal->swSaida4->IsChecked == true) {
 		comand = 'D';
+	}
+	else {
+		comand = 'd';
+	}
+	if (frmPrincipal->swSaida5->IsChecked == true) {
+		comand = 'E';
+	}
+	else {
+		comand = 'e';
 	}
 	return comand;
 }
@@ -382,6 +406,40 @@ void __fastcall TfrmPrincipal::bcSalvarClick(TObject *Sender)
 	else {
 		ShowMessage("Salve o arquivo no armazenamento antes de sobrescrever os dados...");
 		log(16);
+	}
+}
+//---------------------------------------------------------------------------
+
+
+void __fastcall TfrmPrincipal::swSaida2Click(TObject *Sender)
+{
+	if (!btEnviar->Enabled) {
+		enviar_individual();
+	}
+}
+//---------------------------------------------------------------------------
+
+
+void __fastcall TfrmPrincipal::swSaida3Switch(TObject *Sender)
+{
+	if (!btEnviar->Enabled) {
+		enviar_individual();
+	}
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TfrmPrincipal::swSaida4Switch(TObject *Sender)
+{
+	if (!btEnviar->Enabled) {
+		enviar_individual();
+	}
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TfrmPrincipal::swSaida5Switch(TObject *Sender)
+{
+	if (!btEnviar->Enabled) {
+		enviar_individual();
 	}
 }
 //---------------------------------------------------------------------------

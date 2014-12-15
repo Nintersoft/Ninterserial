@@ -337,6 +337,94 @@ object frmPrincipal: TfrmPrincipal
       Text = 'Sa'#237'da 1'
       Width = 313.000000000000000000
     end
+    object lblSaida2: TLabel
+      Anchors = [akLeft, akTop, akRight]
+      StyledSettings = [Style, FontColor]
+      Height = 25.000000000000000000
+      Position.X = 16.000000000000000000
+      Position.Y = 72.000000000000000000
+      TextSettings.Font.Family = 'Arial'
+      TextSettings.Font.Size = 16.000000000000000000
+      Text = 'Sa'#237'da 2'
+      Width = 313.000000000000000000
+    end
+    object lblSaida3: TLabel
+      Anchors = [akLeft, akTop, akRight]
+      StyledSettings = [Style, FontColor]
+      Height = 25.000000000000000000
+      Position.X = 16.000000000000000000
+      Position.Y = 104.000000000000000000
+      TextSettings.Font.Family = 'Arial'
+      TextSettings.Font.Size = 16.000000000000000000
+      Text = 'Sa'#237'da 3'
+      Width = 313.000000000000000000
+    end
+    object lblSaida4: TLabel
+      Anchors = [akLeft, akTop, akRight]
+      StyledSettings = [Style, FontColor]
+      Height = 25.000000000000000000
+      Position.X = 16.000000000000000000
+      Position.Y = 136.000000000000000000
+      TextSettings.Font.Family = 'Arial'
+      TextSettings.Font.Size = 16.000000000000000000
+      Text = 'Sa'#237'da 4'
+      Width = 313.000000000000000000
+    end
+    object lblSaida5: TLabel
+      Anchors = [akLeft, akTop, akRight]
+      StyledSettings = [Style, FontColor]
+      Height = 25.000000000000000000
+      Position.X = 16.000000000000000000
+      Position.Y = 168.000000000000000000
+      TextSettings.Font.Family = 'Arial'
+      TextSettings.Font.Size = 16.000000000000000000
+      Text = 'Sa'#237'da 5'
+      Width = 313.000000000000000000
+    end
+    object swSaida2: TSwitch
+      Anchors = [akTop, akRight]
+      Enabled = False
+      Height = 27.000000000000000000
+      IsChecked = False
+      Position.X = 344.000000000000000000
+      Position.Y = 72.000000000000000000
+      TabOrder = 5
+      Width = 54.000000000000000000
+      OnClick = swSaida2Click
+    end
+    object swSaida3: TSwitch
+      Anchors = [akTop, akRight]
+      Enabled = False
+      Height = 27.000000000000000000
+      IsChecked = False
+      Position.X = 344.000000000000000000
+      Position.Y = 104.000000000000000000
+      TabOrder = 6
+      Width = 54.000000000000000000
+      OnSwitch = swSaida3Switch
+    end
+    object swSaida4: TSwitch
+      Anchors = [akTop, akRight]
+      Enabled = False
+      Height = 27.000000000000000000
+      IsChecked = False
+      Position.X = 344.000000000000000000
+      Position.Y = 136.000000000000000000
+      TabOrder = 7
+      Width = 54.000000000000000000
+      OnSwitch = swSaida4Switch
+    end
+    object swSaida5: TSwitch
+      Anchors = [akTop, akRight]
+      Enabled = False
+      Height = 27.000000000000000000
+      IsChecked = False
+      Position.X = 344.000000000000000000
+      Position.Y = 168.000000000000000000
+      TabOrder = 8
+      Width = 54.000000000000000000
+      OnSwitch = swSaida5Switch
+    end
   end
   object swSaida1: TSwitch
     Anchors = [akTop, akRight]
@@ -402,5 +490,10 @@ object frmPrincipal: TfrmPrincipal
       Visible = False
       Width = 289.000000000000000000
     end
+  end
+  object OPToSoapDomConvert1: TOPToSoapDomConvert
+    Options = [soSendMultiRefObj, soTryAllSchema, soRootRefNodesToBody, soCacheMimeResponse, soUTF8EncodeXML]
+    Left = 208
+    Top = 376
   end
 end
