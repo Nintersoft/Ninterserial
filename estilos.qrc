@@ -1,0 +1,8 @@
+<RCC>
+    <qresource prefix="/">
+        <file>imgs/checkbox.png</file>
+        <file>imgs/handle.png</file>
+        <file>imgs/downarrow.png</file>
+        <file>imgs/sizegrip.png</file>
+    </qresource>
+</RCC>
