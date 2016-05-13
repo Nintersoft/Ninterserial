@@ -19,14 +19,17 @@ public:
 
 private slots:
     void on_btSalvarConfig_clicked();
-
     void on_btRestaurar_clicked();
+
+protected slots:
+    void troca_de_idioma();
+    void recebeConfig(int taxaComConf, int tamByteConf, int paridadeConf, int stopBitConf);
 
 private:
     Ui::jnlConfiguracao *ui;
 
 signals:
-    void enviaConfig(DWORD taxaCom, BYTE tamByte, BYTE paridade, BYTE bitParada);
+    void enviaConfig(DWORD taxaCom, BYTE tamByte, BYTE paridade, BYTE bitParada, QString idioma);
 };
 
 #endif // JNLCONFIGURACAO_H

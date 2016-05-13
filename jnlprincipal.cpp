@@ -13,7 +13,7 @@ jnlPrincipal::jnlPrincipal(QWidget *parent) :
 
     this->ui->barraEstado->showMessage(dataHora.currentDateTime().toString(Qt::SystemLocaleDate) + tr(" : Pronto!"));
     connect(this->ui->menuBtSair, SIGNAL(triggered(bool)), this, SLOT(fecharAplicacao()));
-    connect(jnlConfig, SIGNAL(enviaConfig(DWORD,BYTE,BYTE,BYTE)), this, SLOT(defineConf(DWORD,BYTE,BYTE,BYTE)));
+    connect(jnlConfig, SIGNAL(enviaConfig(DWORD,BYTE,BYTE,BYTE,QString)), this, SLOT(defineConf(DWORD,BYTE,BYTE,BYTE,QString)));
     connect(this->ui->menuBtReg, SIGNAL(triggered(bool)), jnlReg, SLOT(show()));
     connect(this->ui->menuBtSobre, SIGNAL(triggered(bool)), jnlSbr, SLOT(show()));
     connect(this->ui->menuBtConfig, SIGNAL(triggered(bool)), jnlConfig, SLOT(show()));
@@ -24,9 +24,18 @@ jnlPrincipal::jnlPrincipal(QWidget *parent) :
     connect(this, SIGNAL(regErro(int)), jnlReg, SLOT(registraErro(int)));
     connect(this, SIGNAL(regErro(QString)), jnlReg, SLOT(registraErro(QString)));
 
+    connect(this, SIGNAL(mudanca_de_idioma()), jnlConfig, SLOT(troca_de_idioma()));
+    connect(this, SIGNAL(mudanca_de_idioma()), jnlReg, SLOT(troca_de_idioma()));
+    connect(this, SIGNAL(mudanca_de_idioma()), jnlSbr, SLOT(troca_de_idioma()));
+
+    connect(this, SIGNAL(enviaConfig(int,int,int,int)), jnlConfig, SLOT(recebeConfig(int,int,int,int)));
+
     dlgExcessao.setWindowTitle(tr("Erro | Ninterserial"));
     dlgExcessao.setIcon(QMessageBox::Critical);
     dlgExcessao.setStandardButtons(QMessageBox::Ok);
+
+    camIdioma = QApplication::applicationDirPath();
+    camIdioma.append("/idiomas/");
 
     emit regErro(jnlRegistro::constroiErro(tr("Ninterserial iniciado com sucesso. Aguardando comando.")));
 
@@ -65,7 +74,7 @@ jnlPrincipal::~jnlPrincipal()
     delete ui;
 }
 
-void jnlPrincipal::defineConf(DWORD taxaComC, BYTE tamByteC, BYTE paridadeC, BYTE bitParadaC){
+void jnlPrincipal::defineConf(DWORD taxaComC, BYTE tamByteC, BYTE paridadeC, BYTE bitParadaC, QString idioma){
 
     this->ui->barraEstado->showMessage(jnlRegistro::constroiErro(jnlRegistro::NOVASCONFIGS) + tr("Veja o registro para mais detalhes."), 5000);
     emit regErro(jnlRegistro::NOVASCONFIGS);
@@ -77,7 +86,19 @@ void jnlPrincipal::defineConf(DWORD taxaComC, BYTE tamByteC, BYTE paridadeC, BYT
     emit regErro(tr("----- Paridade : ") + QString::number((int)paridade));
     bitParada = bitParadaC;
     emit regErro(tr("----- Bit de parada : ") + QString::number((int)bitParada));
-
+    if (idiomaAtual != idioma){
+        disconnect(this, SIGNAL(mudanca_de_idioma()), jnlReg, SLOT(troca_de_idioma()));
+        idiomaAtual = idioma;
+        lerIdioma(idiomaAtual);
+        emit regErro(tr("----- Idioma : ") + idiomaAtual);
+        QMessageBox aviso;
+        aviso.setWindowTitle(tr("Aviso | Ninterserial"));
+        aviso.setText(tr("Atenção!\nParece que você alterou o idioma da aplicação, reinicie-a para que a alteração seja aplicada por completo."));
+        aviso.setButtonText(QMessageBox::Ok, tr("Entendi"));
+        aviso.setIcon(QMessageBox::Information);
+        aviso.exec();
+        emit enviaConfig((int)taxaComC, (int)tamByteC, (int)paridadeC, (int)bitParadaC);
+    }
 }
 
 int jnlPrincipal::fecharAplicacao()
@@ -91,6 +112,40 @@ int jnlPrincipal::fecharAplicacao()
     else return 1;
 
     return 0;
+}
+
+void trocarTradutor(QTranslator &trad, const QString &localArq)
+{
+    QApplication::removeTranslator(&trad);
+    if(trad.load(localArq)) QApplication::installTranslator(&trad);
+}
+
+void jnlPrincipal::lerIdioma(const QString &idioma)
+{
+    idiomaAtual = idioma;
+    trocarTradutor(tradutor, QString(camIdioma + "Ninterserial_%1.qm").arg(idioma));
+}
+
+void jnlPrincipal::changeEvent(QEvent* evento)
+{
+    if(0 != evento) {
+        switch(evento->type()) {
+
+            case QEvent::LanguageChange:
+                ui->retranslateUi(this);
+                emit mudanca_de_idioma();
+            break;
+
+            case QEvent::LocaleChange:
+            {
+                QString local = QLocale::system().name();
+                local.truncate(local.lastIndexOf('_'));
+                lerIdioma(local);
+            }
+            break;
+        }
+    }
+    QMainWindow::changeEvent(evento);
 }
 
 void jnlPrincipal::on_btInCon_clicked()

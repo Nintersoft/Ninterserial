@@ -40,6 +40,9 @@ public slots:
     void registraErro(int erro);
     void registraErro(QString erro);
 
+protected slots:
+    void troca_de_idioma();
+
 };
 
 #endif // JNLREGISTRO_H

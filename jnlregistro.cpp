@@ -63,3 +63,8 @@ void jnlRegistro::registraErro(int erro){
 void jnlRegistro::registraErro(QString erro){
     ui->txtReg->appendPlainText(erro);
 }
+
+void jnlRegistro::troca_de_idioma()
+{
+    ui->retranslateUi(this);
+}

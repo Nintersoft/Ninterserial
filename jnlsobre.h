@@ -17,6 +17,9 @@ public:
 
 private:
     Ui::jnlSobre *ui;
+
+protected slots:
+    void troca_de_idioma();
 };
 
 #endif // JNLSOBRE_H

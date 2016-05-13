@@ -12,3 +12,8 @@ jnlSobre::~jnlSobre()
 {
     delete ui;
 }
+
+void jnlSobre::troca_de_idioma()
+{
+    ui->retranslateUi(this);
+}

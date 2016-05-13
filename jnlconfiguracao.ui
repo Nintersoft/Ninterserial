@@ -29,7 +29,7 @@
    </size>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>Configurações | Ninterserial</string>
   </property>
   <property name="styleSheet">
    <string notr="true">QToolTip
@@ -875,7 +875,7 @@ QSizeGrip
     </widget>
     <widget class="QRadioButton" name="csIngles">
      <property name="enabled">
-      <bool>false</bool>
+      <bool>true</bool>
      </property>
      <property name="geometry">
       <rect>
