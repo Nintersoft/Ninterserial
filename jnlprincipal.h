@@ -12,6 +12,7 @@
 #include <QCheckBox>
 #include <QRadioButton>
 #include <QTranslator>
+#include <QSettings>
 
 namespace Ui {
 class jnlPrincipal;
@@ -38,8 +39,10 @@ private:
     QString idiomaAtual = "pt";
     QString camIdioma = NULL;
     QTranslator tradutor;
+    QSettings* confProg;
 
     void copiamatriz();
+    void lerconf();
 
 protected:
     handle_t porta;
@@ -70,7 +73,7 @@ private slots:
     void define_saidas();
     void lerIdioma(const QString& idioma);
     void on_cmEnvioAuto_toggled(bool checked);
-    void defineConf(DWORD taxaComC, BYTE tamByteC, BYTE paridadeC, BYTE bitParadaC, QString idioma);
+    void defineConf(DWORD taxaComC, BYTE tamByteC, BYTE paridadeC, BYTE bitParadaC, QString idioma, bool salva);
     void on_btEnviaPerson_clicked();
 
 signals:
@@ -78,6 +81,7 @@ signals:
     void regErro(QString erro);
     void mudanca_de_idioma();
     void enviaConfig(int taxaComConf, int tamByteConf, int paridadeConf, int stopBitConf);
+    void config_in(QString taxaComConf, QString tamByteConf, int paridadeConf, int stopBitConf, QString idiomaC);
 };
 
 #endif // JNLPRINCIPAL_H

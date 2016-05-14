@@ -10,10 +10,12 @@ jnlPrincipal::jnlPrincipal(QWidget *parent) :
     jnlReg = new jnlRegistro();
     jnlSbr = new jnlSobre();
     jnlConfig = new jnlConfiguracao();
+    confProg = new QSettings("Nintersoft","Ninterserial");
 
     this->ui->barraEstado->showMessage(dataHora.currentDateTime().toString(Qt::SystemLocaleDate) + tr(" : Pronto!"));
     connect(this->ui->menuBtSair, SIGNAL(triggered(bool)), this, SLOT(fecharAplicacao()));
-    connect(jnlConfig, SIGNAL(enviaConfig(DWORD,BYTE,BYTE,BYTE,QString)), this, SLOT(defineConf(DWORD,BYTE,BYTE,BYTE,QString)));
+    connect(jnlConfig, SIGNAL(enviaConfig(DWORD,BYTE,BYTE,BYTE,QString,bool)), this, SLOT(defineConf(DWORD,BYTE,BYTE,BYTE,QString,bool)));
+    connect(this, SIGNAL(config_in(QString,QString,int,int,QString)), jnlConfig, SLOT(config_in(QString,QString,int,int,QString)));
     connect(this->ui->menuBtReg, SIGNAL(triggered(bool)), jnlReg, SLOT(show()));
     connect(this->ui->menuBtSobre, SIGNAL(triggered(bool)), jnlSbr, SLOT(show()));
     connect(this->ui->menuBtConfig, SIGNAL(triggered(bool)), jnlConfig, SLOT(show()));
@@ -67,6 +69,8 @@ jnlPrincipal::jnlPrincipal(QWidget *parent) :
         delete csVariavel;
     }
 
+    if (confProg->childGroups().contains("Geral", Qt::CaseInsensitive)) lerconf();
+
 }
 
 jnlPrincipal::~jnlPrincipal()
@@ -74,22 +78,28 @@ jnlPrincipal::~jnlPrincipal()
     delete ui;
 }
 
-void jnlPrincipal::defineConf(DWORD taxaComC, BYTE tamByteC, BYTE paridadeC, BYTE bitParadaC, QString idioma){
+void jnlPrincipal::defineConf(DWORD taxaComC, BYTE tamByteC, BYTE paridadeC, BYTE bitParadaC, QString idioma, bool salva){
 
+    confProg->beginGroup("Geral");
     this->ui->barraEstado->showMessage(jnlRegistro::constroiErro(jnlRegistro::NOVASCONFIGS) + tr("Veja o registro para mais detalhes."), 5000);
     emit regErro(jnlRegistro::NOVASCONFIGS);
     taxaCom = taxaComC;
+    if (salva) confProg->setValue("taxaCom", (int)taxaComC);
     emit regErro(tr("----- Taxa de comunicação : ") + QString::number((int)taxaCom));
     tamByte = tamByteC;
+    if (salva) confProg->setValue("tamByte", tamByteC);
     emit regErro(tr("----- Tamanho do byte : ") + QString::number((int)tamByte));
     paridade = paridadeC;
+    if (salva) confProg->setValue("paridade", paridadeC);
     emit regErro(tr("----- Paridade : ") + QString::number((int)paridade));
     bitParada = bitParadaC;
+    if (salva) confProg->setValue("bitParada", bitParadaC);
     emit regErro(tr("----- Bit de parada : ") + QString::number((int)bitParada));
     if (idiomaAtual != idioma){
         disconnect(this, SIGNAL(mudanca_de_idioma()), jnlReg, SLOT(troca_de_idioma()));
         idiomaAtual = idioma;
         lerIdioma(idiomaAtual);
+        if (salva) confProg->setValue("idioma", idioma);
         emit regErro(tr("----- Idioma : ") + idiomaAtual);
         QMessageBox aviso;
         aviso.setWindowTitle(tr("Aviso | Ninterserial"));
@@ -99,6 +109,26 @@ void jnlPrincipal::defineConf(DWORD taxaComC, BYTE tamByteC, BYTE paridadeC, BYT
         aviso.exec();
         emit enviaConfig((int)taxaComC, (int)tamByteC, (int)paridadeC, (int)bitParadaC);
     }
+
+    if (taxaComC == 19200 && tamByteC == 8 && paridadeC == NOPARITY && bitParadaC == ONESTOPBIT && idioma == "pt") confProg->clear();
+    confProg->endGroup();
+}
+
+void jnlPrincipal::lerconf(){
+    confProg->beginGroup("Geral");
+    QString idioma = confProg->value("idioma").toString();
+    if (idioma != "pt"){
+        idiomaAtual = idioma;
+        lerIdioma(idioma);
+        emit mudanca_de_idioma();
+    }
+    taxaCom = (DWORD)confProg->value("taxaCom").toInt();
+    tamByte = (BYTE)confProg->value("tamByte").toInt();
+    paridade = (BYTE)confProg->value("paridade").toInt();
+    bitParada = (BYTE)confProg->value("bitParada").toInt();
+    emit config_in(confProg->value("taxaCom").toString(), confProg->value("tamByte").toString(),
+                  confProg->value("paridade").toInt(), confProg->value("bitParada").toInt(), idioma);
+    confProg->endGroup();
 }
 
 int jnlPrincipal::fecharAplicacao()

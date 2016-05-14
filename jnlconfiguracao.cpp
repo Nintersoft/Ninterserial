@@ -18,7 +18,8 @@ void jnlConfiguracao::on_btSalvarConfig_clicked()
     QString idioma = "pt";
     if (ui->csIngles->isChecked()) idioma = "en";
     emit enviaConfig((DWORD)ui->coTaxaCom->currentText().toLong(), (BYTE)ui->coTamByte->currentText().toInt(),
-                     (BYTE)ui->coParidade->currentIndex(),(BYTE)ui->coBitParada->currentIndex(), idioma);
+                     (BYTE)ui->coParidade->currentIndex(),(BYTE)ui->coBitParada->currentIndex(), idioma,
+                     ui->cmSalvarPadrao->isChecked());
     jnlConfiguracao::hide();
 }
 
@@ -43,3 +44,11 @@ void jnlConfiguracao::recebeConfig(int taxaComConf, int tamByteConf, int paridad
     ui->coBitParada->setCurrentIndex(stopBitConf);
 }
 
+void jnlConfiguracao::config_in(QString taxaComConf, QString tamByteConf, int paridadeConf, int stopBitConf, QString idiomaC){
+    ui->coTaxaCom->setCurrentText(taxaComConf);
+    ui->coTamByte->setCurrentText(tamByteConf);
+    ui->coParidade->setCurrentIndex(paridadeConf);
+    ui->coBitParada->setCurrentIndex(stopBitConf);
+    if (idiomaC == "en") ui->csIngles->setChecked(true);
+    ui->cmSalvarPadrao->setChecked(true);
+}
