@@ -31,6 +31,10 @@
   <property name="windowTitle">
    <string>Sobre | Ninterserial</string>
   </property>
+  <property name="windowIcon">
+   <iconset resource="estilos.qrc">
+    <normaloff>:/imgs/Ninterserial.png</normaloff>:/imgs/Ninterserial.png</iconset>
+  </property>
   <property name="styleSheet">
    <string notr="true">QToolTip
 {
@@ -678,6 +682,8 @@ p, li { white-space: pre-wrap; }
    </property>
   </widget>
  </widget>
- <resources/>
+ <resources>
+  <include location="estilos.qrc"/>
+ </resources>
  <connections/>
 </ui>

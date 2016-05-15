@@ -3,6 +3,9 @@
 
 #include <QMainWindow>
 #include <QDateTime>
+#include <QTextStream>
+#include <QFileDialog>
+#include <QFile>
 
 namespace Ui {
 class jnlRegistro;
@@ -42,6 +45,7 @@ public slots:
 
 protected slots:
     void troca_de_idioma();
+    void salvar_registro();
 
 };
 

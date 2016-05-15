@@ -13,6 +13,10 @@
   <property name="windowTitle">
    <string>Registro de eventos | Ninterserial</string>
   </property>
+  <property name="windowIcon">
+   <iconset resource="estilos.qrc">
+    <normaloff>:/imgs/Ninterserial.png</normaloff>:/imgs/Ninterserial.png</iconset>
+  </property>
   <property name="styleSheet">
    <string notr="true">QToolTip
 {
@@ -556,11 +560,10 @@ QSizeGrip
       </property>
       <property name="plainText">
        <string>---------------------------------------------------------------------------
-------------- Arquivo de registro de eventos Ninterserial ------------
----- Você poderá usá-lo para fornecer dados ao pedir suporte ----
----- ou apenas para acompanhar os passos que você realizou ----
+---------------- Arquivo de registro de eventos Ninterserial --------------
+--------- Você poderá usá-lo para fornecer dados ao pedir suporte ---------
+---------- ou apenas para acompanhar os passos que você realizou ----------
 ---------------------------------------------------------------------------
-
 </string>
       </property>
      </widget>
@@ -576,9 +579,26 @@ QSizeGrip
      <height>21</height>
     </rect>
    </property>
+   <widget class="QMenu" name="menuArquivo">
+    <property name="title">
+     <string>Arquivo</string>
+    </property>
+    <addaction name="menuBtSalvarComo"/>
+   </widget>
+   <addaction name="menuArquivo"/>
   </widget>
-  <widget class="QStatusBar" name="statusbar"/>
+  <widget class="QStatusBar" name="barraEstado"/>
+  <action name="menuBtSalvarComo">
+   <property name="text">
+    <string>Salvar como...</string>
+   </property>
+   <property name="shortcut">
+    <string>F12</string>
+   </property>
+  </action>
  </widget>
- <resources/>
+ <resources>
+  <include location="estilos.qrc"/>
+ </resources>
  <connections/>
 </ui>

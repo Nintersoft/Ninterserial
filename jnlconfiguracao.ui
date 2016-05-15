@@ -31,6 +31,10 @@
   <property name="windowTitle">
    <string>Configurações | Ninterserial</string>
   </property>
+  <property name="windowIcon">
+   <iconset resource="estilos.qrc">
+    <normaloff>:/imgs/Ninterserial.png</normaloff>:/imgs/Ninterserial.png</iconset>
+  </property>
   <property name="styleSheet">
    <string notr="true">QToolTip
 {
@@ -944,6 +948,8 @@ QSizeGrip
    </property>
   </widget>
  </widget>
- <resources/>
+ <resources>
+  <include location="estilos.qrc"/>
+ </resources>
  <connections/>
 </ui>

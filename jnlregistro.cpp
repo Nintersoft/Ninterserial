@@ -6,7 +6,7 @@ jnlRegistro::jnlRegistro(QWidget *parent) :
     ui(new Ui::jnlRegistro)
 {
     ui->setupUi(this);
-//    defineErros();
+    connect(ui->menuBtSalvarComo, SIGNAL(triggered(bool)), this, SLOT(salvar_registro()));
 }
 
 jnlRegistro::~jnlRegistro()
@@ -61,10 +61,33 @@ void jnlRegistro::registraErro(int erro){
 }
 
 void jnlRegistro::registraErro(QString erro){
-    ui->txtReg->appendPlainText(erro);
+    ui->txtReg->appendPlainText(jnlRegistro::constroiErro(erro));
 }
 
-void jnlRegistro::troca_de_idioma()
-{
+void jnlRegistro::salvar_registro(){
+    QString nomeArq = QFileDialog::getSaveFileName(this, tr("Ninterserial | Salvar arquivo de registro"),
+                                                   QDir::homePath(), tr("Arquivo de texto ( *.txt);;Arquivo de registro de eventos ( *.log)"));
+    if (nomeArq != ""){
+        QFile arquivo(nomeArq);
+        if (arquivo.open(QIODevice::ReadWrite | QIODevice::Append | QIODevice::Text)){
+            QTextStream opSalva(&arquivo);
+            opSalva << ui->txtReg->toPlainText();
+            arquivo.flush();
+            arquivo.close();
+            registraErro(tr("Arquivo de registro de erro salvo com sucesso!"));
+            ui->barraEstado->showMessage(tr("Arquivo de registro de erro salvo com sucesso!"), 5000);
+        }
+        else {
+            registraErro(tr("O arquivo de registro de erro não pôde ser salvo! Falha na operação."));
+            ui->barraEstado->showMessage(tr("O arquivo de registro de erro não pôde ser salvo! Falha na operação."), 5000);
+        }
+    }
+    else{
+        registraErro(tr("O arquivo de registro de erro não pôde ser salvo! Diretório nulo."));
+        ui->barraEstado->showMessage(tr("O arquivo de registro de erro não pôde ser salvo! Diretório nulo."), 5000);
+    }
+}
+
+void jnlRegistro::troca_de_idioma(){
     ui->retranslateUi(this);
 }

@@ -4,5 +4,6 @@
         <file>imgs/handle.png</file>
         <file>imgs/downarrow.png</file>
         <file>imgs/sizegrip.png</file>
+        <file>imgs/Ninterserial.png</file>
     </qresource>
 </RCC>

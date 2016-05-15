@@ -19,6 +19,7 @@ QMAKE_TARGET_COMPANY = Nintersoft
 QMAKE_TARGET_PRODUCT = Ninterserial
 QMAKE_TARGET_DESCRIPTION = Despertador de codigo aberto
 QMAKE_TARGET_COPYRIGHT = Copyright (c) 2016 Nintersoft
+RC_ICONS = imgs\Ninterserial.ico
 RC_LANG = 0x0416
 
 SOURCES += main.cpp\

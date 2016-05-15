@@ -19,6 +19,10 @@
   <property name="windowTitle">
    <string>Ninterserial | Nintersoft</string>
   </property>
+  <property name="windowIcon">
+   <iconset resource="estilos.qrc">
+    <normaloff>:/imgs/Ninterserial.png</normaloff>:/imgs/Ninterserial.png</iconset>
+  </property>
   <property name="styleSheet">
    <string notr="true">QToolTip
 {
@@ -1471,10 +1475,6 @@ QSizeGrip
     <addaction name="menuBtAbrirPorta"/>
     <addaction name="menuBtFecharPorta"/>
     <addaction name="separator"/>
-    <addaction name="menuBtSalvarSessComo"/>
-    <addaction name="menuBtSalvarSess"/>
-    <addaction name="menuBtAbrirSes"/>
-    <addaction name="separator"/>
     <addaction name="menuBtSair"/>
    </widget>
    <widget class="QMenu" name="menuFerramentas">
@@ -1571,6 +1571,8 @@ QSizeGrip
   </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
- <resources/>
+ <resources>
+  <include location="estilos.qrc"/>
+ </resources>
  <connections/>
 </ui>
