@@ -514,7 +514,7 @@
     </message>
     <message>
         <location filename="../jnlprincipal.cpp" line="15"/>
-        <location filename="../jnlprincipal.cpp" line="255"/>
+        <location filename="../jnlprincipal.cpp" line="256"/>
         <source> : Pronto!</source>
         <translation> : Ready!</translation>
     </message>
@@ -571,29 +571,30 @@ Seems that you&apos;ve changed the application language, please, restart the app
         <translation>You are going to close this application. Are you sure?</translation>
     </message>
     <message>
-        <location filename="../jnlprincipal.cpp" line="187"/>
+        <location filename="../jnlprincipal.cpp" line="188"/>
         <source>Tentativa de conexão com a porta </source>
         <translation>Trying to cennect port </translation>
     </message>
     <message>
-        <location filename="../jnlprincipal.cpp" line="199"/>
+        <location filename="../jnlprincipal.cpp" line="200"/>
         <source>
 Por favor, tente novamente!</source>
         <translation>Please, try again!</translation>
     </message>
     <message>
-        <location filename="../jnlprincipal.cpp" line="340"/>
+        <location filename="../jnlprincipal.cpp" line="347"/>
+        <location filename="../jnlprincipal.cpp" line="353"/>
         <source>verificar registro.</source>
         <translation>check the log for details.</translation>
     </message>
     <message>
         <location filename="../jnlprincipal.cpp" line="105"/>
-        <location filename="../jnlprincipal.cpp" line="364"/>
+        <location filename="../jnlprincipal.cpp" line="379"/>
         <source>Aviso | Ninterserial</source>
         <translation>Warning | Ninterserial</translation>
     </message>
     <message>
-        <location filename="../jnlprincipal.cpp" line="365"/>
+        <location filename="../jnlprincipal.cpp" line="380"/>
         <source>Atenção!
 Ao desativar o envio automático TODAS as saídas serão enviadas ao destino selecionado, ou seja, a comunicação poderá demorar um pouco mais.</source>
         <translation>Warning!
@@ -601,7 +602,7 @@ If the automatic send is disabled ALL the outputs are going to be send for the d
     </message>
     <message>
         <location filename="../jnlprincipal.cpp" line="107"/>
-        <location filename="../jnlprincipal.cpp" line="366"/>
+        <location filename="../jnlprincipal.cpp" line="381"/>
         <source>Entendi</source>
         <translation>I understand</translation>
     </message>
@@ -721,34 +722,49 @@ If the automatic send is disabled ALL the outputs are going to be send for the d
     </message>
     <message>
         <location filename="../jnlregistro.cpp" line="50"/>
+        <source>O sinal não pode ser enviado automaticamente (conexão encerrada) : </source>
+        <translation>The signal couldn&apos;t be sent automatically (connection aborted) : </translation>
+    </message>
+    <message>
+        <location filename="../jnlregistro.cpp" line="52"/>
+        <source>Os sinais não puderam ser enviados manualmente (conexão encerrada) : </source>
+        <translation>The signals couldn&apos;t be sent manually (connection aborted) : </translation>
+    </message>
+    <message>
+        <location filename="../jnlregistro.cpp" line="54"/>
+        <source>O sinal personalizado não pôde ser enviado manualmente (conexão encerrada) : </source>
+        <translation>The signal couldn&apos;t be sent manually (connection aborted) : </translation>
+    </message>
+    <message>
+        <location filename="../jnlregistro.cpp" line="56"/>
         <source>Erro ou evento desconhecido...</source>
         <translation>Unknown error or event...</translation>
     </message>
     <message>
-        <location filename="../jnlregistro.cpp" line="68"/>
+        <location filename="../jnlregistro.cpp" line="74"/>
         <source>Ninterserial | Salvar arquivo de registro</source>
         <translation>Ninterserial | Save log file</translation>
     </message>
     <message>
-        <location filename="../jnlregistro.cpp" line="69"/>
+        <location filename="../jnlregistro.cpp" line="75"/>
         <source>Arquivo de texto ( *.txt);;Arquivo de registro de eventos ( *.log)</source>
         <translation>Text file ( *.txt);;Event log files ( *.log)</translation>
     </message>
     <message>
-        <location filename="../jnlregistro.cpp" line="77"/>
-        <location filename="../jnlregistro.cpp" line="78"/>
+        <location filename="../jnlregistro.cpp" line="83"/>
+        <location filename="../jnlregistro.cpp" line="84"/>
         <source>Arquivo de registro de erro salvo com sucesso!</source>
         <translation>Log file saved successfully!</translation>
     </message>
     <message>
-        <location filename="../jnlregistro.cpp" line="81"/>
-        <location filename="../jnlregistro.cpp" line="82"/>
+        <location filename="../jnlregistro.cpp" line="87"/>
+        <location filename="../jnlregistro.cpp" line="88"/>
         <source>O arquivo de registro de erro não pôde ser salvo! Falha na operação.</source>
         <translation>The error log file couldn&apos;t be saved! Operation filed.</translation>
     </message>
     <message>
-        <location filename="../jnlregistro.cpp" line="86"/>
-        <location filename="../jnlregistro.cpp" line="87"/>
+        <location filename="../jnlregistro.cpp" line="92"/>
+        <location filename="../jnlregistro.cpp" line="93"/>
         <source>O arquivo de registro de erro não pôde ser salvo! Diretório nulo.</source>
         <translation>The error log file couldn&apos;t be saved! Null directory.</translation>
     </message>

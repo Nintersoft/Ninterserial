@@ -46,6 +46,12 @@ QString jnlRegistro::constroiErroBasico(int erro){
             return tr("O método de envio foi alternado para automático.");
         case jnlRegistro::NOVASCONFIGS:
             return tr("As seguintes configurações foram aplicadas : ");
+        case jnlRegistro::SINALNAOENVIADOAUTO:
+            return tr("O sinal não pode ser enviado automaticamente (conexão encerrada) : ");
+        case jnlRegistro::SINALNAOENVIADOMANUAL:
+            return tr("Os sinais não puderam ser enviados manualmente (conexão encerrada) : ");
+        case jnlRegistro::SINALNAOENVIADOPERSON:
+            return tr("O sinal personalizado não pôde ser enviado manualmente (conexão encerrada) : ");
         default:
             return tr("Erro ou evento desconhecido...");
     }

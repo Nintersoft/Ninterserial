@@ -154,6 +154,7 @@ void jnlPrincipal::lerIdioma(const QString &idioma)
 {
     idiomaAtual = idioma;
     trocarTradutor(tradutor, QString(camIdioma + "Ninterserial_%1.qm").arg(idioma));
+    trocarTradutor(tradutorQt, QString(camIdioma + "qt_%1.qm").arg(idioma));
 }
 
 void jnlPrincipal::changeEvent(QEvent* evento)
@@ -307,13 +308,18 @@ void jnlPrincipal::enviaAlterado(){
 
             // Porta correspondente ao handle obtido na inicialização
             // Transmissão do PACOTE pela porta serial (RS232)
-            WriteFile(porta,pacote,3,&tamanho_escrito,NULL);
+            if (WriteFile(porta,pacote,3,&tamanho_escrito,NULL)){
+                this->ui->barraEstado->showMessage(jnlRegistro::constroiErro(jnlRegistro::SINALENVIADOAUTO) + enviado, 5000);
+                emit regErro(jnlRegistro::constroiErro(jnlRegistro::SINALENVIADOAUTO) + enviado);
+            }
+            else{
+                this->ui->barraEstado->showMessage(jnlRegistro::constroiErro(jnlRegistro::SINALNAOENVIADOAUTO) + enviado, 5000);
+                emit regErro(jnlRegistro::constroiErro(jnlRegistro::SINALNAOENVIADOAUTO) + enviado);
+                on_btEncCon_clicked();
+            }
             break;
         }
     }
-
-    this->ui->barraEstado->showMessage(jnlRegistro::constroiErro(jnlRegistro::SINALENVIADOAUTO) + enviado, 5000);
-    emit regErro(jnlRegistro::constroiErro(jnlRegistro::SINALENVIADOAUTO) + enviado);
 
     jnlPrincipal::copiamatriz();
 }
@@ -321,7 +327,7 @@ void jnlPrincipal::enviaAlterado(){
 void jnlPrincipal::on_btEnviar_clicked()
 {
     QString enviado = "---------->";
-    emit regErro(jnlRegistro::SINALENVIADOMANUAL);
+    bool foiEnviado = true;
     for (int j = 0; j < 30; ++j){
         unsigned char pacote[3];
         for (int i = destInt*3 - 3, k = 0; i < destInt*3; ++i, ++k)
@@ -332,13 +338,22 @@ void jnlPrincipal::on_btEnviar_clicked()
 
         // Porta correspondente ao handle obtido na inicialização
         // Transmissão do PACOTE pela porta serial (RS232)
-        WriteFile(porta,pacote,3,&tamanho_escrito,NULL);
+        if (!WriteFile(porta,pacote,3,&tamanho_escrito,NULL)) foiEnviado = false;
         if (j != 29) enviado += "\n---------->";
     }
-
-    this->ui->barraEstado->showMessage(jnlRegistro::constroiErro(jnlRegistro::SINALENVIADOMANUAL) +
-                                       tr("verificar registro."), 5000);
-    emit regErro(enviado);
+    if (foiEnviado){
+        emit regErro(jnlRegistro::SINALENVIADOMANUAL);
+        this->ui->barraEstado->showMessage(jnlRegistro::constroiErro(jnlRegistro::SINALENVIADOMANUAL) +
+                                           tr("verificar registro."), 5000);
+        emit regErro(enviado);
+    }
+    else {
+        emit regErro(jnlRegistro::SINALNAOENVIADOMANUAL);
+        this->ui->barraEstado->showMessage(jnlRegistro::constroiErro(jnlRegistro::SINALNAOENVIADOMANUAL) +
+                                           tr("verificar registro."), 5000);
+        emit regErro(enviado);
+        on_btEncCon_clicked();
+    }
 
 }
 
@@ -397,25 +412,34 @@ void jnlPrincipal::define_saidas(){
 void jnlPrincipal::on_btEnviaPerson_clicked()
 {
     if (!ui->edtMsgPerson->text().isEmpty()){
+        bool enviado = true;
         if (!ui->cmIncluiNulo->isChecked()){
             char* pacotePers = new char[ui->edtMsgPerson->text().length()];
             std::string pacotePersStr = ui->edtMsgPerson->text().toStdString();
             std::strncpy(pacotePers, pacotePersStr.c_str(), pacotePersStr.length());
             DWORD tam = DWORD(pacotePersStr.length());
-            WriteFile(porta,pacotePers,tam,&tamanho_escrito,NULL);
+            if (!WriteFile(porta,pacotePers,tam,&tamanho_escrito,NULL)) enviado = false;
         }
         else{
             char* pacotePers = new char[ui->edtMsgPerson->text().length() + 1];
             std::string pacotePersStr = ui->edtMsgPerson->text().toStdString();
             std::strcpy(pacotePers, pacotePersStr.c_str());
             DWORD tam = DWORD(pacotePersStr.length() + 1);
-            WriteFile(porta,pacotePers,tam,&tamanho_escrito,NULL);
+            if (!WriteFile(porta,pacotePers,tam,&tamanho_escrito,NULL)) enviado = false;
             delete [] pacotePers;
         }
 
-        this->ui->barraEstado->showMessage(jnlRegistro::constroiErro(jnlRegistro::SINALENVIADOPERSON) + ui->edtMsgPerson->text(), 5000);
-        emit regErro(jnlRegistro::SINALENVIADOPERSON);
-        emit regErro("---------->" + ui->edtMsgPerson->text());
+        if (enviado){
+            this->ui->barraEstado->showMessage(jnlRegistro::constroiErro(jnlRegistro::SINALENVIADOPERSON) + ui->edtMsgPerson->text(), 5000);
+            emit regErro(jnlRegistro::SINALENVIADOPERSON);
+            emit regErro("---------->" + ui->edtMsgPerson->text());
+        }
+        else {
+            this->ui->barraEstado->showMessage(jnlRegistro::constroiErro(jnlRegistro::SINALNAOENVIADOPERSON) + ui->edtMsgPerson->text(), 5000);
+            emit regErro(jnlRegistro::SINALNAOENVIADOPERSON);
+            emit regErro("---------->" + ui->edtMsgPerson->text());
+            on_btEncCon_clicked();
+        }
         ui->edtMsgPerson->setText(NULL);
     }
 }

@@ -30,7 +30,10 @@ public:
                         SINALRECEBIDO = 8,
                         TROCAMETODOENVIOMAN = 9,
                         TROCAMETODOENVIOAUTO = 10,
-                        NOVASCONFIGS = 11;
+                        NOVASCONFIGS = 11,
+                        SINALNAOENVIADOAUTO = 12,
+                        SINALNAOENVIADOMANUAL = 13,
+                        SINALNAOENVIADOPERSON = 14;
 
     static QString constroiErro(int erro);
     static QString constroiErroBasico(int erro);
