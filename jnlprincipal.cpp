@@ -12,7 +12,6 @@ jnlPrincipal::jnlPrincipal(QWidget *parent) :
     jnlConfig = new jnlConfiguracao();
     confProg = new QSettings("Nintersoft","Ninterserial");
 
-    this->ui->barraEstado->showMessage(dataHora.currentDateTime().toString(Qt::SystemLocaleDate) + tr(" : Pronto!"));
     connect(this->ui->menuBtSair, SIGNAL(triggered(bool)), this, SLOT(fecharAplicacao()));
     connect(jnlConfig, SIGNAL(enviaConfig(DWORD,BYTE,BYTE,BYTE,QString,bool)), this, SLOT(defineConf(DWORD,BYTE,BYTE,BYTE,QString,bool)));
     connect(this, SIGNAL(config_in(QString,QString,int,int,QString)), jnlConfig, SLOT(config_in(QString,QString,int,int,QString)));
@@ -38,8 +37,6 @@ jnlPrincipal::jnlPrincipal(QWidget *parent) :
 
     camIdioma = QApplication::applicationDirPath();
     camIdioma.append("/idiomas/");
-
-    emit regErro(jnlRegistro::constroiErro(tr("Ninterserial iniciado com sucesso. Aguardando comando.")));
 
     unsigned char letramin = 'a';
     unsigned char dest = '1';
@@ -70,6 +67,8 @@ jnlPrincipal::jnlPrincipal(QWidget *parent) :
     }
 
     if (confProg->childGroups().contains("Geral", Qt::CaseInsensitive)) lerconf();
+    this->ui->barraEstado->showMessage(dataHora.currentDateTime().toString(Qt::SystemLocaleDate) + tr(" : Pronto!"));
+    emit regErro(tr("Ninterserial iniciado com sucesso. Aguardando comando."));
 
 }
 
@@ -185,7 +184,7 @@ void jnlPrincipal::on_btInCon_clicked()
     wchar_t *portaWcr = new wchar_t[portaStr.size()+1];
     portaStr.toWCharArray(portaWcr);
 
-    regErro(jnlRegistro::constroiErro(tr("Tentativa de conexão com a porta ") + portaStr));
+    regErro(tr("Tentativa de conexão com a porta ") + portaStr);
 
     //endereço da porta a ser acessada (COMX)
     //porta foi declarado como HANDLE na seção private da declaração de classe Form
@@ -310,11 +309,11 @@ void jnlPrincipal::enviaAlterado(){
             // Transmissão do PACOTE pela porta serial (RS232)
             if (WriteFile(porta,pacote,3,&tamanho_escrito,NULL)){
                 this->ui->barraEstado->showMessage(jnlRegistro::constroiErro(jnlRegistro::SINALENVIADOAUTO) + enviado, 5000);
-                emit regErro(jnlRegistro::constroiErro(jnlRegistro::SINALENVIADOAUTO) + enviado);
+                emit regErro(jnlRegistro::constroiErroBasico(jnlRegistro::SINALENVIADOAUTO) + enviado);
             }
             else{
                 this->ui->barraEstado->showMessage(jnlRegistro::constroiErro(jnlRegistro::SINALNAOENVIADOAUTO) + enviado, 5000);
-                emit regErro(jnlRegistro::constroiErro(jnlRegistro::SINALNAOENVIADOAUTO) + enviado);
+                emit regErro(jnlRegistro::constroiErroBasico(jnlRegistro::SINALNAOENVIADOAUTO) + enviado);
                 on_btEncCon_clicked();
             }
             break;
